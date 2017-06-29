@@ -3,6 +3,7 @@ import Config from './trait_config.js'
 import Header from './header.jsx'
 import Trait from './trait.jsx'
 import Submit from './submit.jsx'
+import Results from './Results.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class App extends React.Component {
     this.state = {
       currentTrait: 0,
       num_traits: 0,
-      show_submit: false,
+      showSubmit: false,
+      showResults: false,
       formData: {
         name: '',
         height: '',
@@ -22,7 +24,6 @@ class App extends React.Component {
         predictor_name: ''
       }
     }
-    this.nextTrait = this.nextTrait.bind(this);
   }
 
   nextTrait(e) {
@@ -31,18 +32,27 @@ class App extends React.Component {
     this.setState({currentTrait: curTrait})
 
     if(this.state.currentTrait === 6) {
-      console.log(this.state.currentTrait)
-      this.setState({show_submit: true})
+      this.setState({showSubmit: true})
     }
+  }
+
+  prevTrait(e) {
+    e.preventDefault()
+    if (this.state.currentTrait > 0) {
+      let curTrait = this.state.currentTrait - 1
+      this.setState({currentTrait: curTrait})
+    }
+  }
+
+  showResults() {
+    this.setState({showResults: true, showSubmit: false})
   }
 
   onInputChange(field, value) {
     let formData = Object.assign({}, this.state.formData, {
       [field]: value
     })
-    console.log(formData)
     this.setState({formData: formData})
-    console.log(this.state)
   }
 
   render() {
@@ -50,14 +60,21 @@ class App extends React.Component {
       <Trait key={index}
         item={item}
         currentTrait={this.state.currentTrait}
-        onNext={this.nextTrait}
+        onPrev={this.prevTrait.bind(this)}
+        onNext={this.nextTrait.bind(this)}
         index={index}
         onInputChange={this.onInputChange.bind(this)}/>
     )
-    console.log(this.state.show_submit)
     let submit = null
-    if(this.state.show_submit){
-      submit = <Submit formData={this.state.formData} onInputChange={this.onInputChange.bind(this)}/>
+    if(this.state.showSubmit){
+      submit = <Submit formData={this.state.formData}
+        onInputChange={this.onInputChange.bind(this)}
+        showResults={this.showResults.bind(this)}/>
+    }
+
+    let results = null
+    if(this.state.showResults){
+      results = <Results />
     }
 
     return (
@@ -66,6 +83,7 @@ class App extends React.Component {
         <div>
           {traits}
           {submit}
+          {results}
         </div>
       </div>
     )

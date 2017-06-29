@@ -31,7 +31,7 @@ const Config = [
   },
   {
     field: "outfit",
-    question: "Should you come closest in predictions, which outfit should he go home in?",
+    question: "Which outfit should he go home in?",
     field_type: "radio"
   }
 ]

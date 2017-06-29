@@ -33,6 +33,9 @@ input {
   font-size: 2.3em;
   text-align: center;
 }
+.hidden {
+  display: none;
+}
 .header {
   margin: auto;
   display: table;
@@ -83,16 +86,18 @@ input {
   font-size: 4em;
     margin: 0em 0 0.2em;
 }
-.next-wrapper {
+button {
   margin: auto;
   cursor: pointer;
   margin-top: 5em;
   width: 40%;
+  background-color: transparent;
+  border: none;
 }
-.next-wrapper .fa{
+button .fa{
   margin-right: 0.2em;
   opacity: .5;
 }
-.next-wrapper span {
+button span {
   font-size: 3.1em;
 }
