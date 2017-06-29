@@ -18,7 +18,7 @@ class App extends React.Component {
         hair_color: '',
         hair_amount: '',
         eye_color: '',
-        outfie: '',
+        outfit: '',
         predictor_name: ''
       }
     }

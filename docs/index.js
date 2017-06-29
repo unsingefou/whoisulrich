@@ -9923,21 +9923,9 @@ var Submit = function (_React$Component) {
   _createClass(Submit, [{
     key: "onSubmit",
     value: function onSubmit() {
-      // var xhr = new XMLHttpRequest();
-      // xhr.open('POST', '/predictions');
-      // xhr.onload = function() {
-      //     if (xhr.status === 200) {
-      //         alert('User\'s name is ' + xhr.responseText);
-      //     }
-      //     else {
-      //         alert('Request failed.  Returned status of ' + xhr.status);
-      //     }
-      // };
-      // xhr.send(this.props.formData);
-
       $.ajax({
         type: "POST",
-        url: '/predictions',
+        url: 'https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec',
         data: this.props.formData
       }).then(function () {
         console.log("done!");
@@ -10164,7 +10152,7 @@ var App = function (_React$Component) {
         hair_color: '',
         hair_amount: '',
         eye_color: '',
-        outfie: '',
+        outfit: '',
         predictor_name: ''
       }
     };
