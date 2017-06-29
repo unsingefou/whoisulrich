@@ -1,0 +1,98 @@
+html, body {
+  font-family: 'Patrick Hand', cursive;
+  padding: 2em;
+}
+.container {
+  text-align: center;
+}
+h1 {
+  font-family: 'Rammetto One', cursive;
+  font-size: 3.5em;
+  margin-bottom: 0;
+}
+h2 {
+  font-family: 'Rammetto One', cursive;
+  font-size: 1.5em;
+  opacity: 0.65;
+  margin-top: 0.4em;
+}
+.help-text {
+  font-size: 2.1em;
+  margin-top: .8em;
+  color: #27918c;
+}
+input {
+  display: block;
+  height: 2em;
+  margin: auto;
+  width: 60%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 3px dashed white;
+  font-size: 2.3em;
+  text-align: center;
+}
+.header {
+  margin: auto;
+  display: table;
+  vertical-align: middle;
+  margin-bottom: 2em;
+}
+.header .titles {
+  text-align: left;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 2em;
+}
+.owl-icon {
+  width: 10em;
+  vertical-align: middle;
+}
+
+.trait {
+  padding: 3em;
+  width: 75%;
+  margin: auto;
+  color: white;
+}
+.trait.name {
+  background-color: #27918C;
+}
+.trait.height, .trait.predictor-name  {
+  background-color: #e3812a;
+}
+.trait.weight {
+  background-color: #FFC415;
+}
+.trait.eye_color{
+  background-color: #A7CA98;
+}
+.trait.hair_color {
+  background-color: #83C6d5;
+}
+.trait.hair_amount, .trait.outfit{
+  background-color: #868385;
+}
+.trait .trait-icon {
+  width: 8em;
+  margin: auto;
+  opacity: .5;
+}
+.trait .question {
+  font-size: 4em;
+    margin: 0em 0 0.2em;
+}
+.next-wrapper {
+  margin: auto;
+  cursor: pointer;
+  margin-top: 5em;
+  width: 40%;
+}
+.next-wrapper .fa{
+  margin-right: 0.2em;
+  opacity: .5;
+}
+.next-wrapper span {
+  font-size: 3.1em;
+}
