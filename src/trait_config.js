@@ -1,38 +1,45 @@
 const Config = [
   {
+    id: 0,
     field: "name",
     question: "What will his name be?",
-    field_type: "text"
+    fieldType: "text"
   },
   {
+    id: 1,
     field: "height",
     question: "What will his height (inches) be?",
-    field_type: "text"
+    fieldType: "text"
   },
   {
+    id: 2,
     field: "weight",
     question: "What will he weigh?",
-    field_type: "weight"
+    fieldType: "weight"
   },
   {
+    id: 3,
     field: "hair_color",
     question: "What will his hair color be?",
-    field_type: "text"
+    fieldType: "text"
   },
   {
+    id: 4,
     field: "hair_amount",
     question: "How much hair will he have?",
-    field_type: "radio"
+    fieldType: "radio"
   },
   {
+    id: 5,
     field: "eye_color",
     question: "What color eyes will he have?",
-    field_type: "text"
+    fieldType: "text"
   },
   {
+    id: 6,
     field: "outfit",
     question: "Which outfit should he go home in?",
-    field_type: "radio"
+    fieldType: "radio"
   }
 ]
 

@@ -49,10 +49,13 @@ class App extends React.Component {
   }
 
   onInputChange(field, value) {
+    console.log(field)
+    console.log(value)
     let formData = Object.assign({}, this.state.formData, {
       [field]: value
     })
     this.setState({formData: formData})
+    console.log(this.state)
   }
 
   render() {
