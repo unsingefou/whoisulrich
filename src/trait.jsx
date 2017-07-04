@@ -9,7 +9,7 @@ class Trait extends React.Component {
 
   render(){
     let hidden = 'hidden'
-    if(this.props.currentTrait === this.props.index) {
+    if(this.props.currentTrait === this.props.item.id) {
       hidden = ''
     }
 
@@ -32,7 +32,7 @@ class Trait extends React.Component {
   parseField(item) {
     switch(item.field) {
       case 'hair_amount':
-        return <HairAmount item={this.props.item.field} onInputChange={this.props.onInputChange}/>
+        return <HairAmount item={this.props.item.field} onInputChange={this.props.onInputChange} formData={this.props.formData}/>
       default:
         return <input name={this.props.item.field} autoFocus='autofocus' onChange={this.onChange.bind(this)}/>
     }

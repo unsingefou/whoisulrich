@@ -18,7 +18,7 @@ class App extends React.Component {
         height: '',
         weight: '',
         hair_color: '',
-        hair_amount: '',
+        hair_amount: 'none',
         eye_color: '',
         outfit: '',
         predictor_name: ''
@@ -65,7 +65,7 @@ class App extends React.Component {
         currentTrait={this.state.currentTrait}
         onPrev={this.prevTrait.bind(this)}
         onNext={this.nextTrait.bind(this)}
-        index={index}
+        formData={this.state.formData}
         onInputChange={this.onInputChange.bind(this)}/>
     )
     let submit = null

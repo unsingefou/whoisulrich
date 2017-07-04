@@ -10078,7 +10078,7 @@ var Trait = function (_React$Component) {
     key: 'render',
     value: function render() {
       var hidden = 'hidden';
-      if (this.props.currentTrait === this.props.index) {
+      if (this.props.currentTrait === this.props.item.id) {
         hidden = '';
       }
 
@@ -10106,7 +10106,7 @@ var Trait = function (_React$Component) {
     value: function parseField(item) {
       switch (item.field) {
         case 'hair_amount':
-          return React.createElement(_HairAmount2.default, { item: this.props.item.field, onInputChange: this.props.onInputChange });
+          return React.createElement(_HairAmount2.default, { item: this.props.item.field, onInputChange: this.props.onInputChange, formData: this.props.formData });
         default:
           return React.createElement('input', { name: this.props.item.field, autoFocus: 'autofocus', onChange: this.onChange.bind(this) });
       }
@@ -10264,40 +10264,52 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HairAmount = function (_React$Component) {
   _inherits(HairAmount, _React$Component);
 
-  function HairAmount() {
+  function HairAmount(props) {
     _classCallCheck(this, HairAmount);
 
-    return _possibleConstructorReturn(this, (HairAmount.__proto__ || Object.getPrototypeOf(HairAmount)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (HairAmount.__proto__ || Object.getPrototypeOf(HairAmount)).call(this, props));
+
+    _this.state = {
+      selected: 'none'
+    };
+    return _this;
   }
 
   _createClass(HairAmount, [{
     key: 'onChange',
     value: function onChange(e) {
-      e.preventDefault();
+      this.setState({ selected: e.target.value });
       this.props.onInputChange('hair_amount', e.target.value);
     }
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.state.selected);
       return React.createElement(
         'div',
         { className: 'hair-amount' },
         React.createElement(
           'div',
           { className: 'center-on-page' },
-          React.createElement('input', { id: 'radio1', type: 'radio', name: 'hair_amount', value: 'none', onChange: this.onChange.bind(this) }),
+          React.createElement('input', { id: 'radio1', type: 'radio', value: 'none',
+            checked: this.state.selected === 'none',
+            onChange: this.onChange.bind(this) }),
           React.createElement(
             'label',
             { htmlFor: 'radio1' },
             'None'
           ),
-          React.createElement('input', { id: 'radio2', type: 'radio', name: 'hair_amount', value: 'little', onChange: this.onChange.bind(this) }),
+          React.createElement('input', { id: 'radio2', type: 'radio', value: 'little',
+            checked: this.state.selected === 'little',
+            onChange: this.onChange.bind(this) }),
           React.createElement(
             'label',
             { htmlFor: 'radio2' },
             'A little'
           ),
-          React.createElement('input', { id: 'radio3', type: 'radio', name: 'hair_amount', value: 'ton', onChange: this.onChange.bind(this) }),
+          React.createElement('input', { id: 'radio3', type: 'radio', value: 'ton',
+            checked: this.state.selected === 'ton',
+            onChange: this.onChange.bind(this) }),
           React.createElement(
             'label',
             { htmlFor: 'radio3' },
@@ -10375,7 +10387,7 @@ var App = function (_React$Component) {
         height: '',
         weight: '',
         hair_color: '',
-        hair_amount: '',
+        hair_amount: 'none',
         eye_color: '',
         outfit: '',
         predictor_name: ''
@@ -10429,7 +10441,7 @@ var App = function (_React$Component) {
           currentTrait: _this2.state.currentTrait,
           onPrev: _this2.prevTrait.bind(_this2),
           onNext: _this2.nextTrait.bind(_this2),
-          index: index,
+          formData: _this2.state.formData,
           onInputChange: _this2.onInputChange.bind(_this2) });
       });
       var submit = null;
