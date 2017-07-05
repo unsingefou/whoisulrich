@@ -3,43 +3,57 @@ const Config = [
     id: 0,
     field: "name",
     question: "What will his name be?",
-    fieldType: "text"
+    fieldType: "text",
+    hasNext: true,
+    hasBack: false
   },
   {
     id: 1,
     field: "height",
-    question: "What will his height (inches) be?",
-    fieldType: "text"
+    question: "How tall will he be?",
+    fieldType: "text",
+    hasNext: true,
+    hasBack: true
   },
   {
     id: 2,
     field: "weight",
-    question: "What will he weigh?",
-    fieldType: "weight"
+    question: "How much will he weigh?",
+    fieldType: "weight",
+    hasNext: true,
+    hasBack: true
   },
   {
     id: 3,
     field: "hair_color",
     question: "What will his hair color be?",
-    fieldType: "text"
+    fieldType: "text",
+    hasNext: true,
+    hasBack: true
   },
   {
     id: 4,
     field: "hair_amount",
     question: "How much hair will he have?",
-    fieldType: "radio"
+    fieldType: "radio",
+    hasNext: true,
+    hasBack: true
   },
   {
     id: 5,
     field: "eye_color",
     question: "What color eyes will he have?",
-    fieldType: "text"
+    fieldType: "text",
+    hasNext: true,
+    hasBack: true
   },
   {
     id: 6,
     field: "outfit",
     question: "Which outfit should he go home in?",
-    fieldType: "radio"
+    fieldType: "radio",
+    hasNext: true,
+    hasBack: true
   }
 ]
 

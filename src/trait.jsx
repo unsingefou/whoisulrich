@@ -1,5 +1,7 @@
 import NavButtons from './NavButtons.jsx'
 import HairAmount from './fields/HairAmount.jsx'
+import Height from './fields/Height.jsx'
+import Weight from './fields/Weight.jsx'
 
 class Trait extends React.Component {
   onChange(e) {
@@ -24,7 +26,9 @@ class Trait extends React.Component {
         <img className='trait-icon' src={icon_src} />
         <p className='question'>{this.props.item.question}</p>
         {this.parseField(this.props.item)}
-        <NavButtons prevLabel='Back' nextLabel='Next' onPrev={this.props.onPrev} onNext={this.props.onNext}/>
+        <NavButtons hasNext={this.props.item.hasNext}
+          hasBack={this.props.item.hasBack}
+          prevLabel='Back' nextLabel='Next' onPrev={this.props.onPrev} onNext={this.props.onNext}/>
       </div>
     )
   }
@@ -32,7 +36,11 @@ class Trait extends React.Component {
   parseField(item) {
     switch(item.field) {
       case 'hair_amount':
-        return <HairAmount item={this.props.item.field} onInputChange={this.props.onInputChange} formData={this.props.formData}/>
+        return <HairAmount onInputChange={this.props.onInputChange} formData={this.props.formData}/>
+      case 'height':
+        return <Height onInputChange={this.props.onInputChange} formData={this.props.formData}/>
+      case 'weight':
+        return <Weight onInputChange={this.props.onInputChange} formData={this.props.formData}/>
       default:
         return <input name={this.props.item.field} autoFocus='autofocus' onChange={this.onChange.bind(this)}/>
     }

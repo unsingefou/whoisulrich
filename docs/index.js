@@ -10007,7 +10007,7 @@ var Submit = function (_React$Component) {
         React.createElement(
           "p",
           { className: "question" },
-          "Tell us your name, so we can tell you if you win!"
+          "Who are you?"
         ),
         React.createElement("input", { name: "predictor_name", autoFocus: "autofocus", onChange: this.onChange.bind(this) }),
         React.createElement(
@@ -10050,6 +10050,14 @@ var _NavButtons2 = _interopRequireDefault(_NavButtons);
 var _HairAmount = __webpack_require__(90);
 
 var _HairAmount2 = _interopRequireDefault(_HairAmount);
+
+var _Height = __webpack_require__(195);
+
+var _Height2 = _interopRequireDefault(_Height);
+
+var _Weight = __webpack_require__(194);
+
+var _Weight2 = _interopRequireDefault(_Weight);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10098,7 +10106,9 @@ var Trait = function (_React$Component) {
           this.props.item.question
         ),
         this.parseField(this.props.item),
-        React.createElement(_NavButtons2.default, { prevLabel: 'Back', nextLabel: 'Next', onPrev: this.props.onPrev, onNext: this.props.onNext })
+        React.createElement(_NavButtons2.default, { hasNext: this.props.item.hasNext,
+          hasBack: this.props.item.hasBack,
+          prevLabel: 'Back', nextLabel: 'Next', onPrev: this.props.onPrev, onNext: this.props.onNext })
       );
     }
   }, {
@@ -10106,7 +10116,11 @@ var Trait = function (_React$Component) {
     value: function parseField(item) {
       switch (item.field) {
         case 'hair_amount':
-          return React.createElement(_HairAmount2.default, { item: this.props.item.field, onInputChange: this.props.onInputChange, formData: this.props.formData });
+          return React.createElement(_HairAmount2.default, { onInputChange: this.props.onInputChange, formData: this.props.formData });
+        case 'height':
+          return React.createElement(_Height2.default, { onInputChange: this.props.onInputChange, formData: this.props.formData });
+        case 'weight':
+          return React.createElement(_Weight2.default, { onInputChange: this.props.onInputChange, formData: this.props.formData });
         default:
           return React.createElement('input', { name: this.props.item.field, autoFocus: 'autofocus', onChange: this.onChange.bind(this) });
       }
@@ -10133,37 +10147,51 @@ var Config = [{
   id: 0,
   field: "name",
   question: "What will his name be?",
-  fieldType: "text"
+  fieldType: "text",
+  hasNext: true,
+  hasBack: false
 }, {
   id: 1,
   field: "height",
-  question: "What will his height (inches) be?",
-  fieldType: "text"
+  question: "How tall will he be?",
+  fieldType: "text",
+  hasNext: true,
+  hasBack: true
 }, {
   id: 2,
   field: "weight",
-  question: "What will he weigh?",
-  fieldType: "weight"
+  question: "How much will he weigh?",
+  fieldType: "weight",
+  hasNext: true,
+  hasBack: true
 }, {
   id: 3,
   field: "hair_color",
   question: "What will his hair color be?",
-  fieldType: "text"
+  fieldType: "text",
+  hasNext: true,
+  hasBack: true
 }, {
   id: 4,
   field: "hair_amount",
   question: "How much hair will he have?",
-  fieldType: "radio"
+  fieldType: "radio",
+  hasNext: true,
+  hasBack: true
 }, {
   id: 5,
   field: "eye_color",
   question: "What color eyes will he have?",
-  fieldType: "text"
+  fieldType: "text",
+  hasNext: true,
+  hasBack: true
 }, {
   id: 6,
   field: "outfit",
   question: "Which outfit should he go home in?",
-  fieldType: "radio"
+  fieldType: "radio",
+  hasNext: true,
+  hasBack: true
 }];
 
 exports.default = Config;
@@ -10209,29 +10237,39 @@ var NavButtons = function (_React$Component) {
   _createClass(NavButtons, [{
     key: 'render',
     value: function render() {
+      var backButton = React.createElement(
+        'button',
+        { onClick: this.props.onPrev },
+        React.createElement('i', { className: 'fa fa-chevron-left fa-3x' }),
+        React.createElement(
+          'span',
+          null,
+          this.props.prevLabel
+        )
+      );
+      if (!this.props.hasBack) {
+        backButton = '';
+      }
+
+      var nextButton = React.createElement(
+        'button',
+        { onClick: this.props.onNext },
+        React.createElement('i', { className: 'fa fa-chevron-right fa-3x' }),
+        React.createElement(
+          'span',
+          null,
+          this.props.nextLabel
+        )
+      );
+      if (!this.props.hasNext) {
+        nextButton = '';
+      }
+
       return React.createElement(
         'div',
         null,
-        React.createElement(
-          'button',
-          { onClick: this.props.onPrev },
-          React.createElement('i', { className: 'fa fa-chevron-left fa-3x' }),
-          React.createElement(
-            'span',
-            null,
-            this.props.prevLabel
-          )
-        ),
-        React.createElement(
-          'button',
-          { onClick: this.props.onNext },
-          React.createElement('i', { className: 'fa fa-chevron-right fa-3x' }),
-          React.createElement(
-            'span',
-            null,
-            this.props.nextLabel
-          )
-        )
+        backButton,
+        nextButton
       );
     }
   }]);
@@ -10264,27 +10302,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HairAmount = function (_React$Component) {
   _inherits(HairAmount, _React$Component);
 
-  function HairAmount(props) {
+  function HairAmount() {
     _classCallCheck(this, HairAmount);
 
-    var _this = _possibleConstructorReturn(this, (HairAmount.__proto__ || Object.getPrototypeOf(HairAmount)).call(this, props));
-
-    _this.state = {
-      selected: 'none'
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (HairAmount.__proto__ || Object.getPrototypeOf(HairAmount)).apply(this, arguments));
   }
 
   _createClass(HairAmount, [{
     key: 'onChange',
     value: function onChange(e) {
-      this.setState({ selected: e.target.value });
       this.props.onInputChange('hair_amount', e.target.value);
     }
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.state.selected);
       return React.createElement(
         'div',
         { className: 'hair-amount' },
@@ -10292,7 +10323,7 @@ var HairAmount = function (_React$Component) {
           'div',
           { className: 'center-on-page' },
           React.createElement('input', { id: 'radio1', type: 'radio', value: 'none',
-            checked: this.state.selected === 'none',
+            checked: this.props.formData.hair_amount === 'none',
             onChange: this.onChange.bind(this) }),
           React.createElement(
             'label',
@@ -10300,7 +10331,7 @@ var HairAmount = function (_React$Component) {
             'None'
           ),
           React.createElement('input', { id: 'radio2', type: 'radio', value: 'little',
-            checked: this.state.selected === 'little',
+            checked: this.props.formData.hair_amount === 'little',
             onChange: this.onChange.bind(this) }),
           React.createElement(
             'label',
@@ -10308,7 +10339,7 @@ var HairAmount = function (_React$Component) {
             'A little'
           ),
           React.createElement('input', { id: 'radio3', type: 'radio', value: 'ton',
-            checked: this.state.selected === 'ton',
+            checked: this.props.formData.hair_amount === 'ton',
             onChange: this.onChange.bind(this) }),
           React.createElement(
             'label',
@@ -10385,7 +10416,8 @@ var App = function (_React$Component) {
       formData: {
         name: '',
         height: '',
-        weight: '',
+        weight_lbs: '',
+        weight_oz: '',
         hair_color: '',
         hair_amount: 'none',
         eye_color: '',
@@ -33449,6 +33481,131 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Weight = function (_React$Component) {
+  _inherits(Weight, _React$Component);
+
+  function Weight() {
+    _classCallCheck(this, Weight);
+
+    return _possibleConstructorReturn(this, (Weight.__proto__ || Object.getPrototypeOf(Weight)).apply(this, arguments));
+  }
+
+  _createClass(Weight, [{
+    key: 'lbsChange',
+    value: function lbsChange(e) {
+      this.props.onInputChange('weight_lbs', e.target.value);
+    }
+  }, {
+    key: 'ozChange',
+    value: function ozChange(e) {
+      this.props.onInputChange('weight_oz', e.target.value);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement('input', { autoFocus: 'autofocus', onChange: this.lbsChange.bind(this),
+          value: this.props.formData.weight_lbs, type: 'number' }),
+        React.createElement(
+          'label',
+          null,
+          'lbs'
+        ),
+        React.createElement('input', { onChange: this.ozChange.bind(this),
+          value: this.props.formData.weight_oz, type: 'number' }),
+        React.createElement(
+          'label',
+          null,
+          'oz'
+        )
+      );
+    }
+  }]);
+
+  return Weight;
+}(React.Component);
+
+exports.default = Weight;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Height = function (_React$Component) {
+  _inherits(Height, _React$Component);
+
+  function Height() {
+    _classCallCheck(this, Height);
+
+    return _possibleConstructorReturn(this, (Height.__proto__ || Object.getPrototypeOf(Height)).apply(this, arguments));
+  }
+
+  _createClass(Height, [{
+    key: 'onInputChange',
+    value: function onInputChange(e) {
+      this.props.onInputChange('height', e.target.value);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement('input', { name: 'height', autoFocus: 'autofocus', type: 'number',
+          onChange: this.onInputChange.bind(this),
+          value: this.props.formData.height }),
+        React.createElement(
+          'label',
+          null,
+          'inches'
+        )
+      );
+    }
+  }]);
+
+  return Height;
+}(React.Component);
+
+exports.default = Height;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ })
 /******/ ]);

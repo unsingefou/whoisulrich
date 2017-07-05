@@ -30,7 +30,7 @@ class Submit extends React.Component {
     return (
       <div className='trait predictor-name'>
         <img className='trait-icon' src='' />
-        <p className='question'>Tell us your name, so we can tell you if you win!</p>
+        <p className='question'>Who are you?</p>
         <input name='predictor_name' autoFocus='autofocus' onChange={this.onChange.bind(this)}/>
         <button disabled={this.state.submitting} onClick={this.onSubmit.bind(this)}>
           <i className='fa fa-chevron-right fa-3x' ></i>

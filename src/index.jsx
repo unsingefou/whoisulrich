@@ -16,7 +16,8 @@ class App extends React.Component {
       formData: {
         name: '',
         height: '',
-        weight: '',
+        weight_lbs: '',
+        weight_oz: '',
         hair_color: '',
         hair_amount: 'none',
         eye_color: '',
