@@ -1,5 +1,7 @@
 var webpack = require("webpack");
 var path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var bourbon = require("bourbon-neat").includePaths
 
 module.exports = {
   resolve: {
@@ -10,11 +12,11 @@ module.exports = {
     modules: [
       "node_modules",
       path.resolve(__dirname, "src"),
-      path.resolve(__dirname, "src/components")
+      path.resolve(__dirname, "src/components"),
+      path.resolve(__dirname, "src/stylesheets")
     ]
   },
   plugins: [
-    // new ExtractTextPlugin("../stylesheets/webpack.css"),
     new webpack.ProvidePlugin({
       'React': path.resolve(__dirname, 'node_modules/react')
     }),
@@ -23,7 +25,8 @@ module.exports = {
       jQuery: path.resolve(__dirname, 'node_modules/jquery'),
       jquery: path.resolve(__dirname, 'node_modules/jquery'),
       "window.jQuery": path.resolve(__dirname, 'node_modules/jquery')
-    })
+    }),
+    new ExtractTextPlugin("./index.css")
   ],
   module: {
 		loaders: [
@@ -34,6 +37,25 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+          test: /\.css$/,
+          use: [ 'style-loader', 'css-loader?modules', ],
+        },
+      {
+        test: /\.scss|css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {loader: "css-loader?required"}, // translates CSS into CommonJS
+            {
+              loader: "sass-loader?required",
+              options: {
+                includePaths: [require('bourbon-neat').includePaths, require("bourbon").includePaths]
+              }
+            } // compiles Sass to CSS
+          ]
+        })
       }
 		]
 	},

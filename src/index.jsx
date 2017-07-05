@@ -1,3 +1,5 @@
+import "./stylesheets/main.scss"
+
 import ReactDOM from 'react-dom'
 import Config from './trait_config.js'
 import Header from './header.jsx'
