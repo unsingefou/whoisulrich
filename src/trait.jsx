@@ -25,7 +25,9 @@ class Trait extends React.Component {
       <div className={this.props.item.field + ' trait ' + hidden}>
         <img className='trait-icon' src={icon_src} />
         <p className='question'>{this.props.item.question}</p>
-        {this.parseField(this.props.item)}
+        <div className={this.props.item.field + ' input-wrapper'}>
+          {this.parseField(this.props.item)}
+        </div>
         <NavButtons hasNext={this.props.item.hasNext}
           hasBack={this.props.item.hasBack}
           prevLabel='Back' nextLabel='Next' onPrev={this.props.onPrev} onNext={this.props.onNext}/>

@@ -15,8 +15,8 @@ class NavButtons extends React.Component {
     let nextButton = (
       <div className='next-button'>
         <button onClick={this.props.onNext}>
-          <i className='fa fa-chevron-right fa-3x' ></i>
           <span>{this.props.nextLabel}</span>
+          <i className='fa fa-chevron-right fa-3x' ></i>
         </button>
       </div>
     )

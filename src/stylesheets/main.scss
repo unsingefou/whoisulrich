@@ -1,11 +1,9 @@
-@import "neat";
-@import "neat-helpers";
-
+@import 'bourbon';
 @import './vars.scss';
+@import "neat";
 
 html, body {
   font-family: 'Patrick Hand', cursive;
-  padding: 2em;
 }
 .container {
   @include outer-container
@@ -19,31 +17,19 @@ html, body {
   }
   h2 {
     font-family: 'Rammetto One', cursive;
-    font-size: 1.5em;
     opacity: 0.65;
     margin-top: 0.4em;
+    font-size: 0.8em;
+
+    @include media($tablet) {
+      font-size: 1.5em;
+    }
   }
   .help-text {
     font-size: 2.1em;
     margin-top: .8em;
     color: #27918c;
   }
-}
-
-input {
-  display: block;
-  height: 1.5em;
-  margin: auto;
-  width: 60%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 3px dashed white;
-  text-align: center;
-  font-size: 4.5em;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: bold;
 }
 .header {
   margin: auto;
@@ -64,9 +50,14 @@ input {
 
 .trait {
   padding: 3em;
-  @include span-columns(12 of 12)
   margin: auto;
   color: white;
+  @include span-columns(12)
+
+  @include media($desktop) {
+    @include span-columns(2)
+    @include shift(1);
+  }
 
   .trait-icon {
     width: 8em;
@@ -79,9 +70,25 @@ input {
       margin: 0em 0 0.2em;
   }
 
-  @include media($large-screen-up) {
-    @include span-columns(10 of 12)
+  .input-wrapper {
+    @include span-columns(10 of 12);
     @include shift(1);
+
+    input {
+      display: block;
+      height: 1.5em;
+      margin: auto;
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      border-bottom: 3px dashed white;
+      text-align: center;
+      font-size: 4.5em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
   }
 }
 .trait.name {
@@ -126,7 +133,7 @@ button {
   border: none;
 
   .fa{
-    margin-right: 0.2em;
+    margin: 0 0.2em;
     opacity: .5;
   }
   span {
@@ -137,3 +144,6 @@ button {
 .hidden {
   display: none;
 }
+
+@import './height_weight_trait.scss';
+@import './radio.scss';

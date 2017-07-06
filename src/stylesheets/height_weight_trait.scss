@@ -1,0 +1,38 @@
+.height.trait {
+  input {
+    width: 38.5%;
+    display: inline-block;
+  }
+  label {
+    display: inline-block;
+    height: 1.5em;
+    margin: auto;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 3px dashed white;
+    text-align: center;
+    font-size: 3.9em;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+}
+.weight.trait {
+  input {
+    width: 21%;
+    display: inline-block;
+  }
+  label {
+    display: inline-block;
+    height: 1.5em;
+    margin: auto;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 3px dashed white;
+    text-align: center;
+    font-size: 3.9em;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+}

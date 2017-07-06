@@ -10105,7 +10105,11 @@ var Trait = function (_React$Component) {
           { className: 'question' },
           this.props.item.question
         ),
-        this.parseField(this.props.item),
+        React.createElement(
+          'div',
+          { className: this.props.item.field + ' input-wrapper' },
+          this.parseField(this.props.item)
+        ),
         React.createElement(_NavButtons2.default, { hasNext: this.props.item.hasNext,
           hasBack: this.props.item.hasBack,
           prevLabel: 'Back', nextLabel: 'Next', onPrev: this.props.onPrev, onNext: this.props.onNext })
@@ -10271,12 +10275,12 @@ var NavButtons = function (_React$Component) {
         React.createElement(
           'button',
           { onClick: this.props.onNext },
-          React.createElement('i', { className: 'fa fa-chevron-right fa-3x' }),
           React.createElement(
             'span',
             null,
             this.props.nextLabel
-          )
+          ),
+          React.createElement('i', { className: 'fa fa-chevron-right fa-3x' })
         )
       );
       if (!this.props.hasNext) {

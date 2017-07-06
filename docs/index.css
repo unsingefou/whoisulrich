@@ -5,8 +5,7 @@ html {
   box-sizing: inherit; }
 
 html, body {
-  font-family: 'Patrick Hand', cursive;
-  padding: 2em; }
+  font-family: 'Patrick Hand', cursive; }
 
 .container {
   max-width: 1024px;
@@ -25,29 +24,17 @@ html, body {
 
 .titles h2 {
   font-family: 'Rammetto One', cursive;
-  font-size: 1.5em;
   opacity: 0.65;
-  margin-top: 0.4em; }
+  margin-top: 0.4em;
+  font-size: 0.8em; }
+  @media screen and (min-width: 768px) {
+    .titles h2 {
+      font-size: 1.5em; } }
 
 .titles .help-text {
   font-size: 2.1em;
   margin-top: .8em;
   color: #27918c; }
-
-input {
-  display: block;
-  height: 1.5em;
-  margin: auto;
-  width: 60%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 3px dashed white;
-  text-align: center;
-  font-size: 4.5em;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: bold; }
 
 .header {
   margin: auto;
@@ -67,14 +54,23 @@ input {
 
 .trait {
   padding: 3em;
+  margin: auto;
+  color: white;
   float: left;
   display: block;
-  margin-right: 2.35765%;
-  width: 100%;
-  margin: auto;
-  color: white; }
+  margin-right: 2.12766%;
+  width: 100%; }
   .trait:last-child {
     margin-right: 0; }
+  @media screen and (min-width: 1024px) {
+    .trait {
+      float: left;
+      display: block;
+      margin-right: 2.12766%;
+      width: 14.89362%;
+      margin-left: 8.51064%; }
+      .trait:last-child {
+        margin-right: 0; } }
   .trait .trait-icon {
     width: 8em;
     margin: auto;
@@ -82,15 +78,28 @@ input {
   .trait .question {
     font-size: 4em;
     margin: 0em 0 0.2em; }
-  @media screen and (min-width: 1024px) {
-    .trait {
-      float: left;
+  .trait .input-wrapper {
+    float: left;
+    display: block;
+    margin-right: 2.12766%;
+    width: 82.97872%;
+    margin-left: 8.51064%; }
+    .trait .input-wrapper:last-child {
+      margin-right: 0; }
+    .trait .input-wrapper input {
       display: block;
-      margin-right: 2.35765%;
-      width: 82.94039%;
-      margin-left: 8.5298%; }
-      .trait:last-child {
-        margin-right: 0; } }
+      height: 1.5em;
+      margin: auto;
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      border-bottom: 3px dashed white;
+      text-align: center;
+      font-size: 4.5em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: bold; }
 
 .trait.name {
   background-color: #27918C; }
@@ -113,23 +122,23 @@ input {
 .nav-buttons {
   float: left;
   display: block;
-  margin-right: 2.35765%;
+  margin-right: 2.12766%;
   width: 100%; }
   .nav-buttons:last-child {
     margin-right: 0; }
   .nav-buttons .back-button {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.12766%;
+    width: 48.93617%;
     text-align: center; }
     .nav-buttons .back-button:last-child {
       margin-right: 0; }
   .nav-buttons .next-button {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.12766%;
+    width: 48.93617%;
     text-align: center; }
     .nav-buttons .next-button:last-child {
       margin-right: 0; }
@@ -143,10 +152,97 @@ button {
   background-color: transparent;
   border: none; }
   button .fa {
-    margin-right: 0.2em;
+    margin: 0 0.2em;
     opacity: .5; }
   button span {
     font-size: 3.1em; }
 
 .hidden {
   display: none; }
+
+.height.trait input {
+  width: 38.5%;
+  display: inline-block; }
+
+.height.trait label {
+  display: inline-block;
+  height: 1.5em;
+  margin: auto;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 3px dashed white;
+  text-align: center;
+  font-size: 3.9em;
+  letter-spacing: 3px;
+  font-weight: bold; }
+
+.weight.trait input {
+  width: 21%;
+  display: inline-block; }
+
+.weight.trait label {
+  display: inline-block;
+  height: 1.5em;
+  margin: auto;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 3px dashed white;
+  text-align: center;
+  font-size: 3.9em;
+  letter-spacing: 3px;
+  font-weight: bold; }
+
+/* CSS Document */
+.hair-amount {
+  position: relative;
+  /* Checked */
+  /* Transition */ }
+  .hair-amount .center-on-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .hair-amount input[type="checkbox"],
+  .hair-amount input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1; }
+  .hair-amount label {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 10px;
+    line-height: 36px;
+    cursor: pointer; }
+  .hair-amount label::before {
+    content: " ";
+    position: absolute;
+    top: 6px;
+    left: 0;
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #8e44ad;
+    border-radius: 4px;
+    z-index: -1; }
+  .hair-amount input[type="radio"] + label::before {
+    border-radius: 18px; }
+  .hair-amount input[type="checkbox"]:checked + label,
+  .hair-amount input[type="radio"]:checked + label {
+    padding-left: 10px;
+    color: #fff; }
+  .hair-amount input[type="checkbox"]:checked + label::before,
+  .hair-amount input[type="radio"]:checked + label::before {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #8e44ad; }
+  .hair-amount label,
+  .hair-amount label::before {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease; }
