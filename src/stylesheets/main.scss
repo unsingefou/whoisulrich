@@ -55,7 +55,7 @@ html, body {
   @include span-columns(12)
 
   @include media($desktop) {
-    @include span-columns(2)
+    @include span-columns(10)
     @include shift(1);
   }
 
