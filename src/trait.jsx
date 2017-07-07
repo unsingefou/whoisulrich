@@ -10,17 +10,16 @@ class Trait extends React.Component {
   }
 
   render(){
+    console.log(this.props)
     let hidden = 'hidden'
     if(this.props.currentTrait === this.props.item.id) {
       hidden = ''
     }
-
-    let input = <input name={this.props.item.field} autoFocus='autofocus' onChange={this.onChange.bind(this)}/>
-    if(this.props.item.fieldType === 'radio') {
-      input = <input name={this.props.item.field} autoFocus='autofocus' onChange={this.onChange.bind(this)}/>
+    let icon_src = null
+    if (this.props.item.field) {
+      icon_src = 'images/' + this.props.item.field + '.svg'
     }
 
-    const icon_src = 'images/' + this.props.item.field + '.svg'
     return (
       <div className={this.props.item.field + ' trait ' + hidden}>
         <img className='trait-icon' src={icon_src} />
@@ -30,7 +29,13 @@ class Trait extends React.Component {
         </div>
         <NavButtons hasNext={this.props.item.hasNext}
           hasBack={this.props.item.hasBack}
-          prevLabel='Back' nextLabel='Next' onPrev={this.props.onPrev} onNext={this.props.onNext}/>
+          hasSubmit={this.props.item.hasSubmit}
+          prevLabel='BACK'
+          nextLabel='NEXT'
+          onPrev={this.props.onPrev}
+          onNext={this.props.onNext}
+          onSubmit={this.props.onSubmit}
+        />
       </div>
     )
   }

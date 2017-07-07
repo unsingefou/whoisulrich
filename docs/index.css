@@ -104,7 +104,7 @@ html, body {
 .trait.name {
   background-color: #27918C; }
 
-.trait.height, .trait.predictor-name {
+.trait.height, .trait.predictor_name {
   background-color: #e3812a; }
 
 .trait.weight {
@@ -148,7 +148,6 @@ button {
   margin: auto;
   cursor: pointer;
   margin-top: 2.4em;
-  width: 40%;
   background-color: transparent;
   border: none; }
   button .fa {

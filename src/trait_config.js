@@ -54,6 +54,15 @@ const Config = [
     fieldType: "radio",
     hasNext: true,
     hasBack: true
+  },
+  {
+    id: 7,
+    field: "predictor_name",
+    question: "Finally, who are you?",
+    fieldType: "text",
+    hasNext: false,
+    hasBack: true,
+    hasSubmit: true
   }
 ]
 
