@@ -66,7 +66,7 @@ class App extends React.Component {
   }
 
   clearForm() {
-    this.setState({formData: this.state.defaultData}
+    this.setState({formData: this.state.defaultData})
   }
 
   onSubmit() {
@@ -103,8 +103,7 @@ class App extends React.Component {
       <div className='row'>
         <Header />
         <div>
-          {form}
-          {results}
+          {content}
         </div>
       </div>
     )
