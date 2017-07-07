@@ -20298,12 +20298,12 @@ var NavButtons = function (_React$Component) {
         { className: 'back-button' },
         React.createElement(
           'button',
-          { onClick: this.props.onPrev },
+          { onClick: this.props.onBack },
           React.createElement('i', { className: 'fa fa-chevron-left fa-3x' }),
           React.createElement(
             'span',
             null,
-            this.props.prevLabel
+            this.props.backLabel
           )
         )
       );
@@ -20690,7 +20690,7 @@ var App = function (_React$Component) {
         return React.createElement(_Trait2.default, { key: index,
           item: item,
           currentTrait: _this3.state.currentTrait,
-          onPrev: _this3.prevTrait.bind(_this3),
+          onBack: _this3.prevTrait.bind(_this3),
           onNext: _this3.nextTrait.bind(_this3),
           formData: _this3.state.formData,
           onInputChange: _this3.onInputChange.bind(_this3),
@@ -33539,7 +33539,6 @@ var Trait = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props);
       var hidden = 'hidden';
       if (this.props.currentTrait === this.props.item.id) {
         hidden = '';
@@ -33566,9 +33565,9 @@ var Trait = function (_React$Component) {
         React.createElement(_NavButtons2.default, { hasNext: this.props.item.hasNext,
           hasBack: this.props.item.hasBack,
           hasSubmit: this.props.item.hasSubmit,
-          prevLabel: 'BACK',
+          backLabel: 'BACK',
           nextLabel: 'NEXT',
-          onPrev: this.props.onPrev,
+          onBack: this.props.onBack,
           onNext: this.props.onNext,
           onSubmit: this.props.onSubmit
         })

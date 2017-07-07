@@ -14,9 +14,9 @@ class NavButtons extends React.Component {
   render(){
     let backButton = (
       <div className='back-button'>
-        <button onClick={this.props.onPrev}>
+        <button onClick={this.props.onBack}>
           <i className='fa fa-chevron-left fa-3x' ></i>
-          <span>{this.props.prevLabel}</span>
+          <span>{this.props.backLabel}</span>
         </button>
       </div>
     )

@@ -85,7 +85,7 @@ class App extends React.Component {
       <Trait key={index}
         item={item}
         currentTrait={this.state.currentTrait}
-        onPrev={this.prevTrait.bind(this)}
+        onBack={this.prevTrait.bind(this)}
         onNext={this.nextTrait.bind(this)}
         formData={this.state.formData}
         onInputChange={this.onInputChange.bind(this)}

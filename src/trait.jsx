@@ -10,7 +10,6 @@ class Trait extends React.Component {
   }
 
   render(){
-    console.log(this.props)
     let hidden = 'hidden'
     if(this.props.currentTrait === this.props.item.id) {
       hidden = ''
@@ -30,9 +29,9 @@ class Trait extends React.Component {
         <NavButtons hasNext={this.props.item.hasNext}
           hasBack={this.props.item.hasBack}
           hasSubmit={this.props.item.hasSubmit}
-          prevLabel='BACK'
+          backLabel='BACK'
           nextLabel='NEXT'
-          onPrev={this.props.onPrev}
+          onBack={this.props.onBack}
           onNext={this.props.onNext}
           onSubmit={this.props.onSubmit}
         />
