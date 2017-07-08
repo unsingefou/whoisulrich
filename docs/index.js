@@ -9933,7 +9933,12 @@ var Results = function (_React$Component) {
         React.createElement(
           "h1",
           null,
-          "Thanks for your prediction. We'll let you know if you win!"
+          "Thanks for playing along. We'll let you know if you win!"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "USER predicts he will be named NAME, HEIGHT inches tall, WEIGHT_LBS lbs WEIGHT_OZ oz, with HAIR_COLOR hair (born with none, just a little, a ton of hair), and EYE_Color eyes."
         )
       );
     }

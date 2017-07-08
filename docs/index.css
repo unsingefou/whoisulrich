@@ -378,6 +378,7 @@ button {
     transition: .25s all ease; }
 
 .outfit-selector input {
+  display: none;
   margin: 0;
   padding: 0;
   -webkit-appearance: none;
@@ -406,8 +407,8 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
-  width: 100px;
-  height: 70px;
+  width: 33%;
+  height: 178px;
   -webkit-transition: all 100ms ease-in;
   -moz-transition: all 100ms ease-in;
   transition: all 100ms ease-in;
