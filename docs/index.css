@@ -11,7 +11,8 @@ html, body {
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 3em; }
   .container::after {
     clear: both;
     content: "";
@@ -224,6 +225,46 @@ button {
     opacity: .5; }
   button span {
     font-size: 3.1em; }
+
+.results p {
+  font-size: 1.3em;
+  text-align: left;
+  border-top: 1px solid #e0dedc;
+  margin: 0;
+  padding: 1em 0; }
+
+.results .item {
+  font-weight: bold; }
+
+.results p:nth-child(3n - 1) {
+  color: #e3812a; }
+  .results p:nth-child(3n - 1) .item {
+    color: #27918C; }
+
+.results p:nth-child(3n - 2) {
+  color: #FFC415; }
+  .results p:nth-child(3n - 2) .item {
+    color: #A7CA98; }
+
+.results p:nth-child(3n - 3) {
+  color: #83C6d5; }
+  .results p:nth-child(3n - 3) .item {
+    color: #868385; }
+
+.results p:nth-child(3n - 1) {
+  color: #eca96e; }
+  .results p:nth-child(3n - 1) .item {
+    color: #e3812a; }
+
+.results p:nth-child(3n - 2) {
+  color: #A7CA98; }
+  .results p:nth-child(3n - 2) .item {
+    color: #7cb065; }
+
+.results p:nth-child(3n - 3) {
+  color: #83C6d5; }
+  .results p:nth-child(3n - 3) .item {
+    color: #4aacc2; }
 
 .hidden {
   display: none; }

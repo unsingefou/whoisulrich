@@ -34,8 +34,13 @@ class App extends React.Component {
         eye_color: '',
         outfit: '',
         predictor_name: ''
-      }
+      },
+      results: []
     }
+
+    this.getResults().then((response) => {
+      this.setState({results: response.results})
+    })
   }
 
   nextTrait(e) {
@@ -80,6 +85,13 @@ class App extends React.Component {
     })
   }
 
+  getResults() {
+    return $.ajax({
+      type: "GET",
+      url: 'https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec',
+    })
+  }
+
   render() {
     const traits = Config.map((item, index) =>
       <Trait key={index}
@@ -94,9 +106,20 @@ class App extends React.Component {
 
     let content = null
     if (this.state.showForm) {
-      content = <div>{traits}</div>
+      content = (
+        <div>
+          {traits}
+          <button onClick={this.toggleForm.bind(this)}>View Predictions</button>
+        </div>
+      )
     } else {
-      content = <Results />
+      content = (
+        <div>
+          <Results results={this.state.results}/>
+          <button onClick={this.toggleForm.bind(this)}>Make a Prediction</button>
+        </div>
+
+      )
     }
 
     return (

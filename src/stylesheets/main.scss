@@ -9,6 +9,7 @@ html, body {
 .container {
   @include outer-container
   text-align: center;
+  margin-bottom: 3em;
 }
 .header {
   @include media($mobile) {
@@ -201,6 +202,81 @@ button {
   span {
     font-size: 3.1em;
   }
+}
+.results {
+  p {
+    font-size: 1.3em;
+    text-align: left;
+    border-top: 1px solid #e0dedc;
+    margin: 0;
+    padding: 1em 0;
+  }
+  .item {
+    font-weight: bold;
+  }
+
+  // Mulitcolored rows
+  p:nth-child(3n - 1 ) {
+    color: #e3812a;
+    .item {
+      color: #27918C;
+    }
+  }
+  p:nth-child(3n - 2 ) {
+    color: #FFC415;
+    .item {
+      color: #A7CA98;
+    }
+  }
+  p:nth-child(3n - 3 ) {
+    color: #83C6d5;
+    .item {
+      color: #868385;
+    }
+  }
+
+  // Same color, darken
+  p:nth-child(3n - 1 ) {
+    color: lighten(#e3812a, 15%);
+    .item {
+      color: #e3812a;
+    }
+  }
+  p:nth-child(3n - 2 ) {
+    color: #A7CA98;
+    .item {
+      color: darken(#A7CA98, 15%);
+    }
+  }
+  p:nth-child(3n - 3 ) {
+    color: #83C6d5;
+    .item {
+      color: darken(#83C6d5, 15%);
+    }
+  }
+
+  // just attributes color change
+  // .predictor-name {
+  //   color: #e3812a;
+  // }
+  // .name {
+  //   color: #27918C;
+  // }
+  // .height {
+  //   color: #e3812a;
+  // }
+  // .weight {
+  //   color: #FFC415;
+  // }
+  // .eye-color {
+  //   color: #A7CA98;
+  // }
+  // .hair-color {
+  //   color: #83C6d5;
+  // }
+  // .hair-amount {
+  //   color: #868385;
+  // }
 }
 
 .hidden {

@@ -9882,7 +9882,7 @@ var Header = function Header() {
       React.createElement(
         'p',
         { className: 'help-text' },
-        'Make your birth prediction below. Win, and choose the outfit he comes home in!'
+        'Make your birth prediction below. Win to select the outfit he comes home in!'
       )
     ),
     React.createElement(
@@ -9925,21 +9925,86 @@ var Results = function (_React$Component) {
   }
 
   _createClass(Results, [{
-    key: "render",
+    key: 'render',
     value: function render() {
+      console.log(this.props);
+      var results = this.props.results.map(function (item, index) {
+
+        var hair_amount = 'none at all';
+        if (item.hair_amount === 'little') {
+          hair_amount = 'just a little';
+        } else if (item.hair_amount === 'ton') {
+          hair_amount = 'a ton of it';
+        }
+
+        return React.createElement(
+          'p',
+          { key: index },
+          React.createElement(
+            'span',
+            { className: 'item predictor-name' },
+            item.predictor_name
+          ),
+          ' predicts that\xA0',
+          React.createElement(
+            'span',
+            { className: 'item name' },
+            item.name
+          ),
+          ' will be\xA0',
+          React.createElement(
+            'span',
+            { className: 'item height' },
+            item.height,
+            ' inches'
+          ),
+          ' tall,\xA0',
+          React.createElement(
+            'span',
+            { className: 'item weight' },
+            item.weight_lbs,
+            'lbs'
+          ),
+          '\xA0',
+          React.createElement(
+            'span',
+            { className: 'item weight' },
+            item.weight_oz,
+            'oz'
+          ),
+          ', with\xA0',
+          React.createElement(
+            'span',
+            { className: 'item hair-color' },
+            item.hair_color,
+            ' hair'
+          ),
+          ' (born with\xA0',
+          React.createElement(
+            'span',
+            { className: 'item hair-amount' },
+            hair_amount
+          ),
+          '), and\xA0',
+          React.createElement(
+            'span',
+            { className: 'item eye-color' },
+            item.eye_color,
+            ' eyes'
+          ),
+          ' .'
+        );
+      });
+
       return React.createElement(
-        "div",
-        null,
+        'div',
+        { className: 'results' },
         React.createElement(
-          "h1",
+          'h1',
           null,
-          "Thanks for playing along. We'll let you know if you win!"
+          'Thanks for playing along. We\'ll let you know if you win!'
         ),
-        React.createElement(
-          "p",
-          null,
-          "USER predicts he will be named NAME, HEIGHT inches tall, WEIGHT_LBS lbs WEIGHT_OZ oz, with HAIR_COLOR hair (born with none, just a little, a ton of hair), and EYE_Color eyes."
-        )
+        results
       );
     }
   }]);
@@ -20791,8 +20856,13 @@ var App = function (_React$Component) {
         eye_color: '',
         outfit: '',
         predictor_name: ''
-      }
+      },
+      results: []
     };
+
+    _this.getResults().then(function (response) {
+      _this.setState({ results: response.results });
+    });
     return _this;
   }
 
@@ -20845,6 +20915,14 @@ var App = function (_React$Component) {
       });
     }
   }, {
+    key: 'getResults',
+    value: function getResults() {
+      return $.ajax({
+        type: "GET",
+        url: 'https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec'
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this3 = this;
@@ -20865,10 +20943,24 @@ var App = function (_React$Component) {
         content = React.createElement(
           'div',
           null,
-          traits
+          traits,
+          React.createElement(
+            'button',
+            { onClick: this.toggleForm.bind(this) },
+            'View Predictions'
+          )
         );
       } else {
-        content = React.createElement(_Results2.default, null);
+        content = React.createElement(
+          'div',
+          null,
+          React.createElement(_Results2.default, { results: this.state.results }),
+          React.createElement(
+            'button',
+            { onClick: this.toggleForm.bind(this) },
+            'Make a Prediction'
+          )
+        );
       }
 
       return React.createElement(
