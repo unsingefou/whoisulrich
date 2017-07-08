@@ -2,6 +2,7 @@ import NavButtons from './NavButtons.jsx'
 import HairAmount from './fields/HairAmount.jsx'
 import Height from './fields/Height.jsx'
 import Weight from './fields/Weight.jsx'
+import Outfit from './fields/Outfit.jsx'
 
 class Trait extends React.Component {
   onChange(e) {
@@ -47,6 +48,8 @@ class Trait extends React.Component {
         return <Height onInputChange={this.props.onInputChange} formData={this.props.formData}/>
       case 'weight':
         return <Weight onInputChange={this.props.onInputChange} formData={this.props.formData}/>
+      case 'outfit':
+        return <Outfit onInputChange={this.props.onInputChange} formData={this.props.formData}/>
       default:
         return <input name={this.props.item.field} autoFocus='autofocus' onChange={this.onChange.bind(this)}/>
     }

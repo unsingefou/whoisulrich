@@ -9974,6 +9974,10 @@ var _Weight = __webpack_require__(93);
 
 var _Weight2 = _interopRequireDefault(_Weight);
 
+var _Outfit = __webpack_require__(200);
+
+var _Outfit2 = _interopRequireDefault(_Outfit);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10044,6 +10048,8 @@ var Trait = function (_React$Component) {
           return React.createElement(_Height2.default, { onInputChange: this.props.onInputChange, formData: this.props.formData });
         case 'weight':
           return React.createElement(_Weight2.default, { onInputChange: this.props.onInputChange, formData: this.props.formData });
+        case 'outfit':
+          return React.createElement(_Outfit2.default, { onInputChange: this.props.onInputChange, formData: this.props.formData });
         default:
           return React.createElement('input', { name: this.props.item.field, autoFocus: 'autofocus', onChange: this.onChange.bind(this) });
       }
@@ -33591,6 +33597,75 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Outfit = function (_React$Component) {
+  _inherits(Outfit, _React$Component);
+
+  function Outfit() {
+    _classCallCheck(this, Outfit);
+
+    return _possibleConstructorReturn(this, (Outfit.__proto__ || Object.getPrototypeOf(Outfit)).apply(this, arguments));
+  }
+
+  _createClass(Outfit, [{
+    key: "onChange",
+    value: function onChange(e) {
+      this.props.onInputChange('outfit', e.target.value);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "div",
+          { className: "outfit-selector" },
+          React.createElement("input", { id: "camper", type: "radio", value: "camper",
+            checked: this.props.formData.hair_amount === 'camper',
+            onChange: this.onChange.bind(this) }),
+          React.createElement("label", { htmlFor: "camper", className: "drinkcard-cc camper" }),
+          React.createElement("input", { id: "space", type: "radio", value: "space",
+            checked: this.props.formData.hair_amount === 'space',
+            onChange: this.onChange.bind(this) }),
+          React.createElement("label", { htmlFor: "space", className: "drinkcard-cc space" }),
+          React.createElement("input", { id: "lion", type: "radio", value: "lion",
+            checked: this.props.formData.hair_amount === 'lion',
+            onChange: this.onChange.bind(this) }),
+          React.createElement("label", { htmlFor: "lion", className: "drinkcard-cc lion" })
+        )
+      );
+    }
+  }]);
+
+  return Outfit;
+}(React.Component);
+
+exports.default = Outfit;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ })
 /******/ ]);
