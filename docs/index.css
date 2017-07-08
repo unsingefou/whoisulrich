@@ -27,6 +27,17 @@ html, body {
       width: 100%; }
       .header:last-child {
         margin-right: 0; } }
+  @media screen and (min-width: 768px) {
+    .header {
+      float: left;
+      display: block;
+      margin-right: 2.12766%;
+      width: 100%;
+      margin-left: 8.51064%;
+      display: flex;
+      align-items: center; }
+      .header:last-child {
+        margin-right: 0; } }
   .header .titles {
     font-family: 'Rammetto One', cursive;
     text-align: left;
@@ -36,30 +47,48 @@ html, body {
     @media screen and (min-width: 768px) {
       .header .titles {
         margin-right: 2em;
-        text-align: left; } }
+        float: left;
+        display: block;
+        margin-right: 2.12766%;
+        width: 65.95745%;
+        text-align: left; }
+        .header .titles:last-child {
+          margin-right: 0; } }
     .header .titles h1 {
       margin-bottom: 0;
       font-size: 2.1em; }
       @media screen and (min-width: 768px) {
         .header .titles h1 {
-          font-size: 3.5em; } }
+          font-size: 3.2em; } }
     .header .titles h2 {
       opacity: 0.65;
       margin-top: 0.4em;
       font-size: 1em; }
       @media screen and (min-width: 768px) {
         .header .titles h2 {
-          font-size: 1.5em; } }
+          font-size: 1.5em;
+          margin-top: -0.3em; } }
     .header .titles .help-text {
+      font-family: 'Patrick Hand', cursive;
       margin-top: .8em;
       color: #27918c;
       font-size: 1.4em; }
       @media screen and (min-width: 768px) {
         .header .titles .help-text {
           font-size: 2.1em; } }
+  @media screen and (min-width: 768px) {
+    .header .owl-wrapper {
+      float: left;
+      display: block;
+      margin-right: 2.12766%;
+      width: 31.91489%; }
+      .header .owl-wrapper:last-child {
+        margin-right: 0; } }
   .header .owl-wrapper .owl-icon {
-    width: 10em;
-    vertical-align: middle; }
+    width: 10em; }
+    @media screen and (min-width: 768px) {
+      .header .owl-wrapper .owl-icon {
+        margin-left: -11em; } }
 
 .trait {
   padding: 3em 1.8em;
@@ -128,6 +157,11 @@ html, body {
       @media screen and (min-width: 768px) {
         .trait .input-wrapper input {
           font-size: 4.5em; } }
+    .trait .input-wrapper input[type=number]::-webkit-inner-spin-button, .trait .input-wrapper input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0; }
 
 .trait.name {
   background-color: #27918C; }
@@ -206,18 +240,20 @@ button {
 
 @media screen and (min-width: 768px) {
   .height.trait input {
+    font-size: 3.9em;
     float: left;
     display: block;
     margin-right: 2.12766%;
-    width: 31.91489%; }
+    width: 23.40426%;
+    margin-left: 25.53191%; }
     .height.trait input:last-child {
       margin-right: 0; } }
 
 .height.trait label {
-  margin-top: 0.5em;
   text-align: left;
   letter-spacing: 3px;
   font-size: 2em;
+  margin-top: 0.5em;
   float: left;
   display: block;
   margin-right: 2.12766%;
@@ -229,9 +265,10 @@ button {
       float: left;
       display: block;
       margin-right: 2.12766%;
-      width: 31.91489%;
+      width: 23.40426%;
       font-size: 3.9em;
-      text-align: left; }
+      text-align: left;
+      margin-top: auto; }
       .height.trait label:last-child {
         margin-right: 0; } }
 
@@ -250,7 +287,7 @@ button {
     float: left;
     display: block;
     margin-right: 2.12766%;
-    width: 31.91489%; }
+    width: 23.40426%; }
     .weight.trait input:last-child {
       margin-right: 0; } }
 
@@ -270,9 +307,10 @@ button {
       float: left;
       display: block;
       margin-right: 2.12766%;
-      width: 31.91489%;
+      width: 23.40426%;
       font-size: 3.9em;
-      text-align: left; }
+      text-align: left;
+      margin-top: auto; }
       .weight.trait label:last-child {
         margin-right: 0; } }
 

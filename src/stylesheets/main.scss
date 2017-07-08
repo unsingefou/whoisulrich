@@ -14,10 +14,12 @@ html, body {
   @include media($mobile) {
     @include span-columns(12)
   }
-
-  // margin: auto;
-  // display: table;
-  // vertical-align: middle;
+  @include media($tablet) {
+    @include span-columns(12)
+    @include shift(1)
+    display: flex;
+    align-items: center;
+  }
   margin-bottom: 2em;
 
   .titles {
@@ -29,6 +31,7 @@ html, body {
 
     @include media($tablet) {
       margin-right: 2em;
+      @include span-columns(8)
       text-align: left;
     }
 
@@ -37,7 +40,7 @@ html, body {
       font-size: 2.1em;
 
       @include media($tablet) {
-        font-size: 3.5em;
+        font-size: 3.2em;
       }
     }
     h2 {
@@ -47,9 +50,11 @@ html, body {
 
       @include media($tablet) {
         font-size: 1.5em;
+        margin-top: -0.3em;
       }
     }
     .help-text {
+      font-family: 'Patrick Hand', cursive;
       margin-top: .8em;
       color: #27918c;
       font-size: 1.4em;
@@ -60,10 +65,15 @@ html, body {
     }
   }
   .owl-wrapper {
+    @include media($tablet) {
+      @include span-columns(4)
+    }
 
     .owl-icon {
       width: 10em;
-      vertical-align: middle;
+      @include media($tablet) {
+        margin-left: -11em;
+      }
     }
   }
 }
@@ -127,6 +137,12 @@ html, body {
       @include media($tablet) {
         font-size: 4.5em;
       }
+    }
+    input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0;
     }
   }
 }
