@@ -1,6 +1,7 @@
 @import 'bourbon';
 @import './vars.scss';
 @import "neat";
+@import "neat-helpers";
 
 html, body {
   font-family: 'Patrick Hand', cursive;
@@ -9,54 +10,75 @@ html, body {
   @include outer-container
   text-align: center;
 }
-.titles {
-  h1 {
-    font-family: 'Rammetto One', cursive;
-    font-size: 3.5em;
-    margin-bottom: 0;
+.header {
+  @include media($mobile) {
+    @include span-columns(12)
   }
-  h2 {
+
+  // margin: auto;
+  // display: table;
+  // vertical-align: middle;
+  margin-bottom: 2em;
+
+  .titles {
     font-family: 'Rammetto One', cursive;
-    opacity: 0.65;
-    margin-top: 0.4em;
-    font-size: 0.8em;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
 
     @include media($tablet) {
-      font-size: 1.5em;
+      margin-right: 2em;
+      text-align: left;
+    }
+
+    h1 {
+      margin-bottom: 0;
+      font-size: 2.1em;
+
+      @include media($tablet) {
+        font-size: 3.5em;
+      }
+    }
+    h2 {
+      opacity: 0.65;
+      margin-top: 0.4em;
+      font-size: 1em;
+
+      @include media($tablet) {
+        font-size: 1.5em;
+      }
+    }
+    .help-text {
+      margin-top: .8em;
+      color: #27918c;
+      font-size: 1.4em;
+
+      @include media($tablet) {
+        font-size: 2.1em;
+      }
     }
   }
-  .help-text {
-    font-size: 2.1em;
-    margin-top: .8em;
-    color: #27918c;
+  .owl-wrapper {
+
+    .owl-icon {
+      width: 10em;
+      vertical-align: middle;
+    }
   }
-}
-.header {
-  margin: auto;
-  display: table;
-  vertical-align: middle;
-  margin-bottom: 2em;
-}
-.header .titles {
-  text-align: left;
-  vertical-align: middle;
-  display: inline-block;
-  margin-right: 2em;
-}
-.owl-icon {
-  width: 10em;
-  vertical-align: middle;
 }
 
 .trait {
-  padding: 3em;
+  padding: 3em 1.8em;
   margin: auto;
   color: white;
+
   @include span-columns(12)
 
   @include media($desktop) {
     @include span-columns(10)
     @include shift(1);
+    padding: 3em;
   }
 
   .trait-icon {
@@ -66,28 +88,45 @@ html, body {
   }
 
   .question {
-    font-size: 4em;
+    font-size: 2.6em;
+    margin: 0em 0 0.7em;
+
+    @include media($mobile) {
+      line-height: 1.2em;
+    }
+
+    @include media($tablet) {
+      font-size: 4em;
       margin: 0em 0 0.2em;
+    }
   }
 
   .input-wrapper {
-    @include span-columns(10 of 12);
-    @include shift(1);
+    @include span-columns(12 of 12);
+
+    @include media($tablet) {
+      @include span-columns(10 of 12);
+      @include shift(1);
+    }
 
     input {
       display: block;
-      height: 1.5em;
-      margin: auto;
       width: 100%;
       border: 0;
       outline: 0;
       background: transparent;
       border-bottom: 3px dashed white;
       text-align: center;
-      font-size: 4.5em;
+      font-size: 2em;
       text-transform: uppercase;
       letter-spacing: 3px;
       font-weight: bold;
+      font-family: 'Patrick Hand', cursive;
+      color: white;
+
+      @include media($tablet) {
+        font-size: 4.5em;
+      }
     }
   }
 }
@@ -109,6 +148,13 @@ html, body {
 .trait.hair_amount, .trait.outfit{
   background-color: #868385;
 }
+.hair_amount.input-wrapper {
+  margin-bottom: 10em;
+
+  @include media($tablet) {
+    margin-bottom: 5em;
+  }
+}
 
 .nav-buttons {
   @include span-columns(12 of 12)
@@ -124,6 +170,7 @@ html, body {
 }
 
 button {
+  font-family: 'Patrick Hand', cursive;
   color: white;
   margin: auto;
   cursor: pointer;

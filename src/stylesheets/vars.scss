@@ -7,5 +7,6 @@ $max-width: 1024px;
 
 $visual-grid: false;
 
+$mobile: new-breakpoint(min-width 0px 12);
 $tablet: new-breakpoint(min-width 768px 12);
 $desktop: new-breakpoint(min-width 1024px 12);

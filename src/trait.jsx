@@ -29,8 +29,8 @@ class Trait extends React.Component {
         <NavButtons hasNext={this.props.item.hasNext}
           hasBack={this.props.item.hasBack}
           hasSubmit={this.props.item.hasSubmit}
-          backLabel='BACK'
-          nextLabel='NEXT'
+          backLabel='Back'
+          nextLabel='Next'
           onBack={this.props.onBack}
           onNext={this.props.onNext}
           onSubmit={this.props.onSubmit}

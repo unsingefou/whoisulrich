@@ -58,7 +58,7 @@ const Config = [
   {
     id: 7,
     field: "predictor_name",
-    question: "Finally, who are you?",
+    question: "Finally, what is your name?",
     fieldType: "text",
     hasNext: false,
     hasBack: true,

@@ -28,7 +28,7 @@ class NavButtons extends React.Component {
     let nextLabel = this.props.nextLabel
     if(this.props.hasSubmit) {
       onNext = this.onSubmit.bind(this)
-      nextLabel = 'SUBMIT'
+      nextLabel = 'Submit'
     }
 
     let nextButton = (
