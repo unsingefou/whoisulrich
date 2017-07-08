@@ -30,7 +30,7 @@
   input {
     @include media($mobile) {
       font-size: 3em;
-      @include span-columns(3)
+      @include span-columns(3.5)
     }
 
 
@@ -44,7 +44,7 @@
     letter-spacing: 3px;
     font-size: 2em;
 
-    @include span-columns(3)
+    @include span-columns(2.5)
 
     @include media($tablet) {
       @include span-columns(4)
