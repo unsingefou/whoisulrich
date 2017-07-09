@@ -5,6 +5,7 @@ import Config from './trait_config.js'
 import Header from './Header.jsx'
 import Trait from './Trait.jsx'
 import Results from './Results.jsx'
+import Spinner from './Spinner.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
       currentTrait: 0,
       num_traits: 0,
       showForm: true,
+      showSpinner: true,
       formData: {
         name: '',
         height: '',
@@ -75,13 +77,25 @@ class App extends React.Component {
   }
 
   onSubmit() {
+    this.setState({showSpinner: true})
     $.ajax({
       type: "POST",
       url: 'https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec',
       data: this.state.formData
     }).then(() => {
-      this.clearForm()
-      this.toggleForm()
+      this.getResults().then((response) => {
+        this.setState({results: response.results})
+        this.clearForm()
+        this.toggleForm()
+        this.setState({showSpinner: false})
+      }).fail(() => {
+        this.setState({showSpinner: false})
+      })
+
+    }).fail(() => {
+      this.setState({showSpinner: false})
+      alert(`Looks like something horrible happened to your prediction, becuase we didn't receive it. You might
+      want to try again.`)
     })
   }
 
@@ -109,14 +123,18 @@ class App extends React.Component {
       content = (
         <div>
           {traits}
-          <button onClick={this.toggleForm.bind(this)}>View Predictions</button>
+          <div className='view-toggle'>
+            <a onClick={this.toggleForm.bind(this)}>See what others are predicting</a>
+          </div>
         </div>
       )
     } else {
       content = (
         <div>
           <Results results={this.state.results}/>
-          <button onClick={this.toggleForm.bind(this)}>Make a Prediction</button>
+          <div className='view-toggle'>
+            <a onClick={this.toggleForm.bind(this)}>Make a prediction</a>
+          </div>
         </div>
 
       )
@@ -128,6 +146,7 @@ class App extends React.Component {
         <div>
           {content}
         </div>
+        <Spinner showSpinner={this.state.showSpinner} />
       </div>
     )
   }

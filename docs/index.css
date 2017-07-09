@@ -231,25 +231,13 @@ button {
   text-align: left;
   border-top: 1px solid #e0dedc;
   margin: 0;
-  padding: 1em 0; }
+  padding: 1em .5em; }
+  @media screen and (min-width: 768px) {
+    .results p {
+      padding: 1em 0; } }
 
 .results .item {
   font-weight: bold; }
-
-.results p:nth-child(3n - 1) {
-  color: #e3812a; }
-  .results p:nth-child(3n - 1) .item {
-    color: #27918C; }
-
-.results p:nth-child(3n - 2) {
-  color: #FFC415; }
-  .results p:nth-child(3n - 2) .item {
-    color: #A7CA98; }
-
-.results p:nth-child(3n - 3) {
-  color: #83C6d5; }
-  .results p:nth-child(3n - 3) .item {
-    color: #868385; }
 
 .results p:nth-child(3n - 1) {
   color: #eca96e; }
@@ -265,6 +253,42 @@ button {
   color: #83C6d5; }
   .results p:nth-child(3n - 3) .item {
     color: #4aacc2; }
+
+.view-toggle {
+  float: left;
+  display: block;
+  margin-right: 2.12766%;
+  width: 100%;
+  color: #868385;
+  margin-top: 2em;
+  font-size: 1.2em;
+  text-decoration: underline;
+  cursor: pointer; }
+  .view-toggle:last-child {
+    margin-right: 0; }
+
+.spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: .4; }
+  .spinner .fa {
+    color: white;
+    margin: 3.5em auto;
+    font-size: 3em;
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 
 .hidden {
   display: none; }

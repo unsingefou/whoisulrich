@@ -1,6 +1,5 @@
 class Results extends React.Component {
   render(){
-    console.log(this.props)
     let results = this.props.results.map((item, index) => {
 
       let hair_amount = 'none at all'
@@ -18,8 +17,8 @@ class Results extends React.Component {
           <span className='item weight'>{item.weight_lbs}lbs</span>&nbsp;
           <span className='item weight'>{item.weight_oz}oz</span>, with&nbsp;
           <span className='item hair-color'>{item.hair_color} hair</span> (born with&nbsp;
-          <span className='item hair-amount'>{hair_amount}</span>), and&nbsp;
-          <span className='item eye-color'>{item.eye_color} eyes</span> .
+          <span className='item hair-amount'>{hair_amount}</span>), and will have&nbsp;
+          <span className='item eye-color'>{item.eye_color} eyes</span>.
         </p>
       )
     })

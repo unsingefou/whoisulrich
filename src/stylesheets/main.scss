@@ -209,30 +209,15 @@ button {
     text-align: left;
     border-top: 1px solid #e0dedc;
     margin: 0;
-    padding: 1em 0;
+    padding: 1em .5em;
+
+    @include media($tablet) {
+      padding: 1em 0;
+    }
+
   }
   .item {
     font-weight: bold;
-  }
-
-  // Mulitcolored rows
-  p:nth-child(3n - 1 ) {
-    color: #e3812a;
-    .item {
-      color: #27918C;
-    }
-  }
-  p:nth-child(3n - 2 ) {
-    color: #FFC415;
-    .item {
-      color: #A7CA98;
-    }
-  }
-  p:nth-child(3n - 3 ) {
-    color: #83C6d5;
-    .item {
-      color: #868385;
-    }
   }
 
   // Same color, darken
@@ -254,29 +239,37 @@ button {
       color: darken(#83C6d5, 15%);
     }
   }
+}
+.view-toggle {
+  @include span-columns(12)
+  color: #868385;
+  margin-top: 2em;
+  font-size: 1.2em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: .4;
 
-  // just attributes color change
-  // .predictor-name {
-  //   color: #e3812a;
-  // }
-  // .name {
-  //   color: #27918C;
-  // }
-  // .height {
-  //   color: #e3812a;
-  // }
-  // .weight {
-  //   color: #FFC415;
-  // }
-  // .eye-color {
-  //   color: #A7CA98;
-  // }
-  // .hair-color {
-  //   color: #83C6d5;
-  // }
-  // .hair-amount {
-  //   color: #868385;
-  // }
+  .fa {
+    color: white;
+    margin: 3.5em auto;
+    font-size: 3em;
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  @keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+  }
 }
 
 .hidden {

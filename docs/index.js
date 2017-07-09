@@ -9927,7 +9927,6 @@ var Results = function (_React$Component) {
   _createClass(Results, [{
     key: 'render',
     value: function render() {
-      console.log(this.props);
       var results = this.props.results.map(function (item, index) {
 
         var hair_amount = 'none at all';
@@ -9985,14 +9984,14 @@ var Results = function (_React$Component) {
             { className: 'item hair-amount' },
             hair_amount
           ),
-          '), and\xA0',
+          '), and will have\xA0',
           React.createElement(
             'span',
             { className: 'item eye-color' },
             item.eye_color,
             ' eyes'
           ),
-          ' .'
+          '.'
         );
       });
 
@@ -20813,6 +20812,10 @@ var _Results = __webpack_require__(84);
 
 var _Results2 = _interopRequireDefault(_Results);
 
+var _Spinner = __webpack_require__(201);
+
+var _Spinner2 = _interopRequireDefault(_Spinner);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -20835,6 +20838,7 @@ var App = function (_React$Component) {
       currentTrait: 0,
       num_traits: 0,
       showForm: true,
+      showSpinner: true,
       formData: {
         name: '',
         height: '',
@@ -20905,13 +20909,23 @@ var App = function (_React$Component) {
     value: function onSubmit() {
       var _this2 = this;
 
+      this.setState({ showSpinner: true });
       $.ajax({
         type: "POST",
         url: 'https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec',
         data: this.state.formData
       }).then(function () {
-        _this2.clearForm();
-        _this2.toggleForm();
+        _this2.getResults().then(function (response) {
+          _this2.setState({ results: response.results });
+          _this2.clearForm();
+          _this2.toggleForm();
+          _this2.setState({ showSpinner: false });
+        }).fail(function () {
+          _this2.setState({ showSpinner: false });
+        });
+      }).fail(function () {
+        _this2.setState({ showSpinner: false });
+        alert('Looks like something horrible happened to your prediction, becuase we didn\'t receive it. You might\n      want to try again.');
       });
     }
   }, {
@@ -20945,9 +20959,13 @@ var App = function (_React$Component) {
           null,
           traits,
           React.createElement(
-            'button',
-            { onClick: this.toggleForm.bind(this) },
-            'View Predictions'
+            'div',
+            { className: 'view-toggle' },
+            React.createElement(
+              'a',
+              { onClick: this.toggleForm.bind(this) },
+              'See what others are predicting'
+            )
           )
         );
       } else {
@@ -20956,9 +20974,13 @@ var App = function (_React$Component) {
           null,
           React.createElement(_Results2.default, { results: this.state.results }),
           React.createElement(
-            'button',
-            { onClick: this.toggleForm.bind(this) },
-            'Make a Prediction'
+            'div',
+            { className: 'view-toggle' },
+            React.createElement(
+              'a',
+              { onClick: this.toggleForm.bind(this) },
+              'Make a prediction'
+            )
           )
         );
       }
@@ -20971,7 +20993,8 @@ var App = function (_React$Component) {
           'div',
           null,
           content
-        )
+        ),
+        React.createElement(_Spinner2.default, { showSpinner: this.state.showSpinner })
       );
     }
   }]);
@@ -33762,6 +33785,33 @@ var Outfit = function (_React$Component) {
 }(React.Component);
 
 exports.default = Outfit;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Spinner = function Spinner(_ref) {
+  var showSpinner = _ref.showSpinner;
+
+  if (showSpinner) {
+    return React.createElement(
+      'div',
+      { className: 'spinner' },
+      React.createElement('i', { className: 'fa fa-spinner' })
+    );
+  } else {
+    return null;
+  }
+};
+
+exports.default = Spinner;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ })
