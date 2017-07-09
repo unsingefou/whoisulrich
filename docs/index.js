@@ -10001,7 +10001,7 @@ var Results = function (_React$Component) {
         React.createElement(
           'h1',
           null,
-          'Thanks for playing along. We\'ll let you know if you win!'
+          'Here are the predictions so far:'
         ),
         results
       );

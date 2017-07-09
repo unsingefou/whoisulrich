@@ -25,7 +25,7 @@ class Results extends React.Component {
 
     return (
       <div className='results'>
-        <h1>Thanks for playing along. We'll let you know if you win!</h1>
+        <h1>Here are the predictions so far:</h1>
         {results}
       </div>
     )
