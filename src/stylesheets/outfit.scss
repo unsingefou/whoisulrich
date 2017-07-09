@@ -10,8 +10,8 @@
 .space{background-image:url(https://dl.dropboxusercontent.com/s/6vcqj8dcwatb1i4/Outfit_2.jpeg);}
 .lion{background-image:url(https://dl.dropboxusercontent.com/s/drv3743ryoqwtle/Outfit_3.jpeg);}
 
-.outfit-selector-2 input:active +.drinkcard-cc, .outfit-selector input:active +.drinkcard-cc{opacity: .9;}
-.outfit-selector-2 input:checked +.drinkcard-cc, .outfit-selector input:checked +.drinkcard-cc{
+.outfit-selector input:active +.drinkcard-cc{opacity: .9;}
+.outfit-selector input:checked +.drinkcard-cc{
     -webkit-filter: none;
        -moz-filter: none;
             filter: none;
@@ -29,6 +29,12 @@
     -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
        -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
             filter: brightness(1.8) grayscale(1) opacity(.7);
+
+  @include media($mobile) {
+    margin-top: 1em;
+    @include span-columns(9)
+    @include shift(1.7)
+  }
 }
 .drinkcard-cc:hover{
     -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
