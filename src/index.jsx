@@ -14,7 +14,7 @@ class App extends React.Component {
       currentTrait: 0,
       num_traits: 0,
       showForm: true,
-      showSpinner: true,
+      showSpinner: false,
       formData: {
         name: '',
         height: '',
