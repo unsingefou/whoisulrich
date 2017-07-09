@@ -12,13 +12,13 @@
     transform: translate(-50%, 2%);
     @include media($mobile) {
       text-align: left;
-      margin-left: 2.3em;
       font-size: 2em;
     }
 
     @include media($tablet) {
       transform: translate(-50%, 25%);
       font-size: 2.4em;
+      margin-left: 2.3em;
     }
 
   }
@@ -30,13 +30,19 @@
   }
   label {
     position: relative;
-    display: inline-block;
     margin-right: 30px;
     margin-bottom: 10px;
     padding-left: 30px;
     padding-right: 10px;
     line-height: 36px;
     cursor: pointer;
+
+    @include media($mobile) {
+      display: block;
+    }
+    @include media($tablet) {
+      display: inline-block;
+    }
   }
   label::before {
     content: " ";

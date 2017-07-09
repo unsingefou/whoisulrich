@@ -392,12 +392,12 @@ button {
     @media screen and (min-width: 0px) {
       .hair-amount .center-on-page {
         text-align: left;
-        margin-left: 2.3em;
         font-size: 2em; } }
     @media screen and (min-width: 768px) {
       .hair-amount .center-on-page {
         transform: translate(-50%, 25%);
-        font-size: 2.4em; } }
+        font-size: 2.4em;
+        margin-left: 2.3em; } }
   .hair-amount input[type="checkbox"],
   .hair-amount input[type="radio"] {
     position: absolute;
@@ -405,13 +405,18 @@ button {
     z-index: -1; }
   .hair-amount label {
     position: relative;
-    display: inline-block;
     margin-right: 30px;
     margin-bottom: 10px;
     padding-left: 30px;
     padding-right: 10px;
     line-height: 36px;
     cursor: pointer; }
+    @media screen and (min-width: 0px) {
+      .hair-amount label {
+        display: block; } }
+    @media screen and (min-width: 768px) {
+      .hair-amount label {
+        display: inline-block; } }
   .hair-amount label::before {
     content: " ";
     position: absolute;
