@@ -336,24 +336,25 @@ button {
       .height.trait label:last-child {
         margin-right: 0; } }
 
-@media screen and (min-width: 0px) {
-  .weight.trait input {
-    font-size: 3em;
-    float: left;
-    display: block;
-    margin-right: 2.12766%;
-    width: 27.65957%; }
-    .weight.trait input:last-child {
-      margin-right: 0; } }
-
-@media screen and (min-width: 768px) {
-  .weight.trait input {
-    float: left;
-    display: block;
-    margin-right: 2.12766%;
-    width: 23.40426%; }
-    .weight.trait input:last-child {
-      margin-right: 0; } }
+.weight.trait input {
+  padding: 0; }
+  @media screen and (min-width: 0px) {
+    .weight.trait input {
+      font-size: 3em;
+      float: left;
+      display: block;
+      margin-right: 2.12766%;
+      width: 27.65957%; }
+      .weight.trait input:last-child {
+        margin-right: 0; } }
+  @media screen and (min-width: 768px) {
+    .weight.trait input {
+      float: left;
+      display: block;
+      margin-right: 2.12766%;
+      width: 23.40426%; }
+      .weight.trait input:last-child {
+        margin-right: 0; } }
 
 .weight.trait label {
   margin-top: 0.5em;

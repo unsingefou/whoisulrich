@@ -29,6 +29,7 @@
 }
 .weight.trait {
   input {
+    padding: 0;
     @include media($mobile) {
       font-size: 3em;
       @include span-columns(3.5)
