@@ -6,6 +6,7 @@ import Header from './Header.jsx'
 import Trait from './Trait.jsx'
 import Results from './Results.jsx'
 import Spinner from './Spinner.jsx'
+import {get, post} from './Api.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -78,21 +79,18 @@ class App extends React.Component {
 
   onSubmit() {
     this.setState({showSpinner: true})
-    $.ajax({
-      type: "POST",
-      url: 'https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec',
-      data: this.state.formData
-    }).then(() => {
+
+    this.postPrediction().then(() => {
       this.getResults().then((response) => {
         this.setState({results: response.results})
         this.clearForm()
         this.toggleForm()
         this.setState({showSpinner: false})
-      }).fail(() => {
+      }, () => {
         this.setState({showSpinner: false})
       })
 
-    }).fail(() => {
+    }, () => {
       this.setState({showSpinner: false})
       alert(`Looks like something horrible happened to your prediction, becuase we didn't receive it. You might
       want to try again.`)
@@ -100,10 +98,10 @@ class App extends React.Component {
   }
 
   getResults() {
-    return $.ajax({
-      type: "GET",
-      url: 'https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec',
-    })
+    return get('https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec')
+  }
+  postPrediction() {
+    return post('https://script.google.com/macros/s/AKfycbwajEx9DG8t51_Btu06zRdmYZLXwnPsq4dvBmyzAPr-AU5SLxzu/exec', this.state.formData)
   }
 
   render() {

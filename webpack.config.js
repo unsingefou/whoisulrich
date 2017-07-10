@@ -20,12 +20,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       'React': path.resolve(__dirname, 'node_modules/react')
     }),
-    new webpack.ProvidePlugin({
-      $: path.resolve(__dirname, 'node_modules/jquery'),
-      jQuery: path.resolve(__dirname, 'node_modules/jquery'),
-      jquery: path.resolve(__dirname, 'node_modules/jquery'),
-      "window.jQuery": path.resolve(__dirname, 'node_modules/jquery')
-    }),
     new ExtractTextPlugin("./index.css")
   ],
   module: {
